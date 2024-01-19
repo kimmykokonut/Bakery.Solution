@@ -31,8 +31,15 @@ namespace Bakery.Tests
     public void CalcPrice_DeterminesPriceOrderLessThan1_Int()
     {
       Pastry badOrder = new Pastry(0);
-      int pastryOrder = badOrder.CalcPrice();
-      Assert.AreEqual(0, pastryOrder);
+      int pastryPrice = badOrder.CalcPrice();
+      Assert.AreEqual(0, pastryPrice);
+    }
+    [TestMethod]
+    public void CalcPrice_DeterminesPriceIfOrderMult3_Int()
+    {
+      Pastry newOrder = new Pastry(6);
+      int pastryPrice = newOrder.CalcPrice();
+      Assert.AreEqual(20, pastryPrice);
     }
   }
 }
