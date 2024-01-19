@@ -15,16 +15,16 @@ namespace Bakery.Models
       }
       else
       {
-        if (Order % 3 == 0)
+        int breadTotalCost = 0;
+
+        for (int i = 1; i <= Order; i++)
         {
-          int discountOrder = (Order - (Order / 3)); 
-          int breadTotalCost = discountOrder * 5; 
-          return breadTotalCost;
+          if (i % 3 !=0)
+          {
+            breadTotalCost += 5;
+          }
         }
-        else
-        {
-          return Order * 5;
-        }
+        return breadTotalCost;
       }
     }
   }
