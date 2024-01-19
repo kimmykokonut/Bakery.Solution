@@ -35,11 +35,11 @@ namespace Bakery.Tests
       Assert.AreEqual(0, pastryPrice);
     }
     [TestMethod]
-    public void CalcPrice_DeterminesPriceIfOrderMult3_Int()
+    public void CalcPrice_DeterminesPriceIfOrderMult4_Int()
     {
-      Pastry newOrder = new Pastry(6);
+      Pastry newOrder = new Pastry(4);
       int pastryPrice = newOrder.CalcPrice();
-      Assert.AreEqual(20, pastryPrice);
+      Assert.AreEqual(6, pastryPrice);
     }
   }
 }
