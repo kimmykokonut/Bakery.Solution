@@ -28,5 +28,9 @@ namespace Bakery.Models
           return pastryTotalCost;
         }
       }
+    public void UpdateOrder(int addToOrder)
+    {
+      Order = Order + addToOrder;
     }
+  }
   }

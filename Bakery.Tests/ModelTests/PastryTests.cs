@@ -55,5 +55,12 @@ namespace Bakery.Tests
       int pastryPrice = newOrder.CalcPrice();
       Assert.AreEqual(12, pastryPrice);
     }
+    public void UpdateOrder_SetsUpdatedOrderValue_Void()
+    {
+      Pastry testPastry = new Pastry(3);
+      int addToOrder = 5;
+      testPastry.UpdateOrder(addToOrder);
+      Assert.AreEqual(8, testPastry.Order);
+    }
   }
 }
