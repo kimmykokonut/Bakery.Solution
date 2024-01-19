@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Bakery.Models
 {
   public class Bread
@@ -26,6 +28,10 @@ namespace Bakery.Models
         }
         return breadTotalCost;
       }
+    }
+    public void UpdateOrder(int addToOrder)
+    {
+      Order = Order + addToOrder;
     }
   }
 }

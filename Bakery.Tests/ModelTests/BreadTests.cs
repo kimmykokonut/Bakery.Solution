@@ -1,4 +1,5 @@
 using Bakery.Models;
+using System.Collections.Generic;
 
 namespace Bakery.Tests
 {
@@ -55,5 +56,14 @@ namespace Bakery.Tests
       int breadOrder = newOrder.CalcPrice();
       Assert.AreEqual(20, breadOrder);
     }
+    [TestMethod]
+    public void UpdateOrder_SetsUpdatedOrderValue_Void()
+    {
+      Bread testBread = new Bread(3);
+      int addToOrder = 5;
+      testBread.UpdateOrder(addToOrder);
+      Assert.AreEqual(8, testBread.Order);
+    }
+
   }
 }
