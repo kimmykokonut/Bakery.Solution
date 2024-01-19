@@ -7,7 +7,7 @@ _by Kim Robinson_
     - Be greeted and given menu with prices
     - Order quantities of bread and pastry
     - Receive the total price
-    - Order based on deal price
+    - Order total reflects deal price (bread, buy 2 get 1 free; pastry buy 3 get 1 free)
 
 ### Technologies Used
 
