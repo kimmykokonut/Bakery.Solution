@@ -1,10 +1,60 @@
 ﻿using System;
+using Bakery.Models;
 
-class Program
+namespace Bakery
 {
-  static void Main()
+  class Program
   {
-    //ui code here
-    Console.WriteLine("Hello World");
+    static void Main()
+    {
+      Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
+      Console.WriteLine("Benvenuti to Paola's Bakery!");
+      Console.WriteLine("Here is our menu: Bread ($5/loaf), Pastries ($2 each)");
+      Console.WriteLine("We have a deal today: Buy 2 loaves of bread, get one free! Buy 3 pastries, get one free!");
+      Console.WriteLine("How much bread would you like to order? Enter a number...");
+      string breadQtyString = Console.ReadLine();
+      int breadQtyInt = int.Parse(breadQtyString);
+      Console.WriteLine("How many pastries would you like to order? Enter a number...");
+      string pastryQtyString = Console.ReadLine();
+      int pastryQtyInt = int.Parse(pastryQtyString);
+      Bread newBread = new Bread(breadQtyInt);
+      Pastry newPastry = new Pastry(pastryQtyInt);
+      ConfirmOrder(newBread, newPastry);
+    }
+    static void ConfirmOrder(Bread newBread, Pastry newPastry)
+    {
+      Console.WriteLine("Please confirm your order...");
+      Console.WriteLine($"I see you want to order {newBread.Order} loaves of bread and {newPastry.Order} pastry item(s)");
+      Console.WriteLine("Is that correct? Enter 'y' to receive your total order cost or 'n' to place your order again");
+      string userInput = Console.ReadLine();
+      if (userInput == "y" || userInput == "Y")
+      {
+        GetTotal(newBread, newPastry);
+      }
+      else
+      {
+        Console.WriteLine("Let's update your order.");
+        Console.WriteLine("Please enter how many loaves of bread you want...");
+        string newBreadOrderStr = Console.ReadLine();
+        newBread.Order = int.Parse(newBreadOrderStr);
+        Console.WriteLine("Please enter how many pieces of pastry you want...");
+        string newPastryOrderStr = Console.ReadLine();
+        newPastry.Order = int.Parse(newPastryOrderStr);
+        ConfirmOrder(newBread, newPastry);
+
+      }
+    }
+    static void GetTotal(Bread newBread, Pastry newPastry)
+    {
+      int breadTotal = newBread.CalcPrice();
+      int pastryTotal = newPastry.CalcPrice();
+      Console.WriteLine("-----------------------------------------");
+      Console.WriteLine("Your receipt:");
+      Console.WriteLine($"Bread: {newBread.Order} loaves: ${breadTotal}.");
+      Console.WriteLine($"Pastry: {newPastry.Order} item(s): ${pastryTotal}.");
+      Console.WriteLine("Your total due is: $" + (breadTotal + pastryTotal) + ".");
+      Console.WriteLine("-----------------------------------------");
+    }
   }
+
 }
