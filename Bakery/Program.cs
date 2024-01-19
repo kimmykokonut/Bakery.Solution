@@ -9,8 +9,12 @@ namespace Bakery
     {
       Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
       Console.WriteLine("Benvenuti to Paola's Bakery!");
-      Console.WriteLine("Here is our menu: Bread ($5/loaf), Pastries ($2 each)");
+      Console.WriteLine("Here is our menu: \n* Bread: $5/loaf\n* Pastries: $2 each");
       Console.WriteLine("We have a deal today: Buy 2 loaves of bread, get one free! Buy 3 pastries, get one free!");
+      PlaceOrder();
+    }
+    static void PlaceOrder()
+    {
       Console.WriteLine("How much bread would you like to order? Enter a number...");
       string breadQtyString = Console.ReadLine();
       int breadQtyInt = int.Parse(breadQtyString);
@@ -34,14 +38,7 @@ namespace Bakery
       else
       {
         Console.WriteLine("Let's update your order.");
-        Console.WriteLine("Please enter how many loaves of bread you want...");
-        string newBreadOrderStr = Console.ReadLine();
-        newBread.Order = int.Parse(newBreadOrderStr);
-        Console.WriteLine("Please enter how many pieces of pastry you want...");
-        string newPastryOrderStr = Console.ReadLine();
-        newPastry.Order = int.Parse(newPastryOrderStr);
-        ConfirmOrder(newBread, newPastry);
-
+        PlaceOrder();
       }
     }
     static void GetTotal(Bread newBread, Pastry newPastry)
@@ -54,6 +51,16 @@ namespace Bakery
       Console.WriteLine($"Pastry: {newPastry.Order} item(s): ${pastryTotal}.");
       Console.WriteLine("Your total due is: $" + (breadTotal + pastryTotal) + ".");
       Console.WriteLine("-----------------------------------------");
+      Console.WriteLine("Would you like to add to your total? Type 'y' to add more items or any other key to exit");
+      string userInput = Console.ReadLine();
+      if (userInput == "y" || userInput == "Y")
+      {
+        PlaceOrder(); //creates new order. can you instance? or running total...
+      }
+      else
+      {
+        Console.WriteLine("Thanks for supporting Paola's Bakery. Goodbye!");
+      }
     }
   }
 
