@@ -16,18 +16,17 @@ namespace Bakery.Models
       }
       else
       {
-        if (Order % 4 == 0)
+        int pastryTotalCost = 0;
+        
+        for (int i = 1; i <= Order; i++)
         {
-          int discountOrder = (Order - (Order / 4));
-          int pastryTotalCost = discountOrder * 2;
-          return pastryTotalCost;
+          if (i % 4 != 0)
+          {
+            pastryTotalCost += 2;
+          }
         }
-        else
-        {
-          return Order * 2;
+          return pastryTotalCost;
         }
       }
     }
   }
-
-}

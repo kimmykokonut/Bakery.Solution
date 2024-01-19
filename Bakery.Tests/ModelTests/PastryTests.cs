@@ -51,9 +51,9 @@ namespace Bakery.Tests
     [TestMethod]
     public void CalcPrice_DeterminesPriceIfOrderOver4_Int()
     {
-      Pastry newOrder = new Pastry(5);
+      Pastry newOrder = new Pastry(7);
       int pastryPrice = newOrder.CalcPrice();
-      Assert.AreEqual(8, pastryPrice);
+      Assert.AreEqual(12, pastryPrice);
     }
   }
 }
