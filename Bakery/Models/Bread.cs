@@ -17,8 +17,8 @@ namespace Bakery.Models
       {
         if (Order % 3 == 0)
         {
-          int discountOrder = Order - 1;
-          int breadTotalCost = discountOrder * 5;
+          int discountOrder = (Order - (Order / 3)); 
+          int breadTotalCost = discountOrder * 5; 
           return breadTotalCost;
         }
         else

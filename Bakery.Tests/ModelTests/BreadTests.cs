@@ -41,5 +41,12 @@ namespace Bakery.Tests
       int breadOrder = newOrder.CalcPrice();
       Assert.AreEqual(10, breadOrder);
     }
+    [TestMethod]
+    public void CalcPrice_DeterminesPriceMultipleOf3_Int()
+    {
+      Bread newOrder = new Bread(9);
+      int breadOrder = newOrder.CalcPrice();
+      Assert.AreEqual(30, breadOrder);
+    }
   }
 }
