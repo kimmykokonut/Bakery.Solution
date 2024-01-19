@@ -23,13 +23,25 @@ namespace Bakery
       Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
       Console.WriteLine("How much bread would you like to order? Enter a number...");
       string breadQtyString = Console.ReadLine();
-      int breadQtyInt = int.Parse(breadQtyString);
       Console.WriteLine("How many pastries would you like to order? Enter a number...");
       string pastryQtyString = Console.ReadLine();
-      int pastryQtyInt = int.Parse(pastryQtyString);
-      Bread newBread = new Bread(breadQtyInt);
-      Pastry newPastry = new Pastry(pastryQtyInt);
-      ConfirmOrder(newBread, newPastry);
+      try
+      {
+        int breadQtyInt = int.Parse(breadQtyString);
+        int pastryQtyInt = int.Parse(pastryQtyString);
+        Bread newBread = new Bread(breadQtyInt);
+        Pastry newPastry = new Pastry(pastryQtyInt);
+        ConfirmOrder(newBread, newPastry);
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine("!!!!!!!");
+        Console.WriteLine("Whoops!");
+        Console.WriteLine("Error: {0}", ex.Message);
+        Console.WriteLine("Please try again (numbers only)...");
+        PlaceOrder();
+      }
+      
     }
     static void ConfirmOrder(Bread newBread, Pastry newPastry)
     {
