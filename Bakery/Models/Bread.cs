@@ -11,11 +11,20 @@ namespace Bakery.Models
     {
       if (Order < 1)
       {
-      return 0;
+        return 0;
       }
       else
       {
-        return 0;
+        if (Order % 3 == 0)
+        {
+          int discountOrder = Order - 1;
+          int breadTotalCost = discountOrder * 5;
+          return breadTotalCost;
+        }
+        else
+        {
+          return Order * 5;
+        }
       }
     }
 
