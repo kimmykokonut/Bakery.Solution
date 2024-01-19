@@ -8,6 +8,17 @@ public class Pastry
   {
     Order = quantity;
   }
+  public int CalcPrice()
+  {
+    if (Order < 1)
+    {
+      return 0;
+    }
+    else
+    {
+      return Order;
+    }
+  }
 }
 
 }
