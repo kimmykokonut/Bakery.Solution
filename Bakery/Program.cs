@@ -41,7 +41,7 @@ namespace Bakery
         Console.WriteLine("Please try again (numbers only)...");
         PlaceOrder();
       }
-      
+
     }
     static void ConfirmOrder(Bread newBread, Pastry newPastry)
     {
@@ -68,17 +68,28 @@ namespace Bakery
       string breadUpdateStr = Console.ReadLine();
       Console.WriteLine("How many more pastry items? Type 0 to skip.");
       string pastryUpdateStr = Console.ReadLine();
-      int breadUpdate = int.Parse(breadUpdateStr);
-      int pastryUpdate = int.Parse(pastryUpdateStr);
-      newBread.UpdateOrder(breadUpdate);
-      Console.WriteLine($"Your new bread order is {newBread.Order}. Is that correct? Type 'y' to move on or any other key to try again");
-      string userBreadInput = Console.ReadLine();
-      if (userBreadInput == "y" || userBreadInput == "Y")
+      try
       {
-        GetTotal(newBread, newPastry);
+        int breadUpdate = int.Parse(breadUpdateStr);
+        int pastryUpdate = int.Parse(pastryUpdateStr);
+        newBread.UpdateOrder(breadUpdate);
+        newPastry.UpdateOrder(pastryUpdate);
+        Console.WriteLine($"Your current bread order is {newBread.Order} loaves. \nYour current pastry order is {newPastry.Order} pastries. \nType 'more' to add more baked goods or any other key to receive your receipt");
+        string userUpdateInput = Console.ReadLine();
+        if (userUpdateInput == "more")
+        {
+          UpdateQuantity(newBread, newPastry);
+        }
+        else
+        {
+          GetTotal(newBread, newPastry);
+        }
       }
-      else
+      catch
       {
+        Console.WriteLine("!!!!!!!");
+        Console.WriteLine("Whoops! You didn't enter a valid number");
+        Console.WriteLine("Please try again...");
         UpdateQuantity(newBread, newPastry);
       }
     }
@@ -95,7 +106,7 @@ namespace Bakery
       Console.WriteLine($"Pastry: {newPastry.Order} item(s): ${pastryTotal}");
       Console.WriteLine("Your total due is: $" + (breadTotal + pastryTotal));
       Console.WriteLine("-----------------------------------------");
-      Console.WriteLine("Would you like to add more food to your order? Type 'y' to add more items or any other key to exit");
+      Console.WriteLine("Would you like to add more baked goods to your order? Type 'y' to add more items or any other key to exit");
       string userInput = Console.ReadLine();
       if (userInput == "y" || userInput == "Y")
       {
