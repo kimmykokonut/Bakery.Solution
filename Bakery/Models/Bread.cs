@@ -27,10 +27,5 @@ namespace Bakery.Models
         }
       }
     }
-
-
-
   }
-
 }
-// price set. ea x = 5 unless x%3, then x=x-1

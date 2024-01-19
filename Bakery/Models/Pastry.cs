@@ -1,4 +1,12 @@
+namespace Bakery.Models
+{
 public class Pastry
 {
-  //business logic code here
+
+  public Pastry()
+  {
+
+  }
+}
+
 }
