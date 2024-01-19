@@ -1,7 +1,7 @@
-namespace ProjectName.Tests
+namespace Bakery.Tests
 {
   [TestClass]
-  public class ClassNameTests
+  public class BreadTests
   {
     [TestMethod]
     public void Constructor_CreatesInstance_Instance()
