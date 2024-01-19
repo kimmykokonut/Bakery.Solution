@@ -27,5 +27,12 @@ namespace Bakery.Tests
       newBread.Order = newOrder;
       Assert.AreEqual(newOrder, newBread.Order);
     }
+    [TestMethod]
+    public void CalcPrice_DeterminesPriceByOrderLessThan1_Int()
+    {
+      Bread badOrder = new Bread(0);
+      string breadOrder = badOrder.CalcPrice();
+      Assert.AreEqual("Error, you must order at least 1 loaf of bread", breadOrder);
+    }
   }
 }
