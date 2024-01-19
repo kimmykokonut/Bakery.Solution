@@ -24,7 +24,7 @@ namespace Bakery.Models
         }
         else
         {
-          return Order;
+          return Order * 2;
         }
       }
     }

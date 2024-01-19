@@ -41,5 +41,12 @@ namespace Bakery.Tests
       int pastryPrice = newOrder.CalcPrice();
       Assert.AreEqual(6, pastryPrice);
     }
+    [TestMethod]
+    public void CalcPrice_DeterminesPriceIfPositiveOrderNotMult4_Int()
+    {
+      Pastry newOrder = new Pastry(3);
+      int pastryPrice = newOrder.CalcPrice();
+      Assert.AreEqual(6, pastryPrice);
+    }
   }
 }
