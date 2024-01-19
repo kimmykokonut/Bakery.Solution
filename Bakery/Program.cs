@@ -61,6 +61,27 @@ namespace Bakery
         PlaceOrder();
       }
     }
+    static void UpdateQuantity(Bread newBread, Pastry newPastry)
+    {
+      Console.WriteLine("Let's update your order...");
+      Console.WriteLine("How many more loaves of bread? Type 0 to skip.");
+      string breadUpdateStr = Console.ReadLine();
+      Console.WriteLine("How many more pastry items? Type 0 to skip.");
+      string pastryUpdateStr = Console.ReadLine();
+      int breadUpdate = int.Parse(breadUpdateStr);
+      int pastryUpdate = int.Parse(pastryUpdateStr);
+      newBread.UpdateOrder(breadUpdate);
+      Console.WriteLine($"Your new bread order is {newBread.Order}. Is that correct? Type 'y' to move on or any other key to try again");
+      string userBreadInput = Console.ReadLine();
+      if (userBreadInput == "y" || userBreadInput == "Y")
+      {
+        GetTotal(newBread, newPastry);
+      }
+      else
+      {
+        UpdateQuantity(newBread, newPastry);
+      }
+    }
     static void GetTotal(Bread newBread, Pastry newPastry)
     {
       int breadTotal = newBread.CalcPrice();
@@ -74,11 +95,11 @@ namespace Bakery
       Console.WriteLine($"Pastry: {newPastry.Order} item(s): ${pastryTotal}");
       Console.WriteLine("Your total due is: $" + (breadTotal + pastryTotal));
       Console.WriteLine("-----------------------------------------");
-      Console.WriteLine("Would you like to add to your total? Type 'y' to add more items or any other key to exit");
+      Console.WriteLine("Would you like to add more food to your order? Type 'y' to add more items or any other key to exit");
       string userInput = Console.ReadLine();
       if (userInput == "y" || userInput == "Y")
       {
-        PlaceOrder(); //creates new order. can you instance? or running total...
+        UpdateQuantity(newBread, newPastry);
       }
       else
       {
