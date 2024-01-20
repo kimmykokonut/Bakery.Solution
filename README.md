@@ -5,9 +5,10 @@ _by Kim Robinson_
 
 ###  This app will allow a user to:
     - Be greeted and given menu with prices
-    - Order quantities of bread and pastry
+    - Order quantities of bread (french or sourdough) and pastry
     - Receive the total price
-    - Order total reflects deal price (bread, buy 2 get 1 free; pastry buy 3 get 1 free)
+    - Update order to add more items
+    - Receipt reflects deal price (bread, buy 2 get 1 free; pastry buy 3 get 1 free)
 
 ### Technologies Used
 
