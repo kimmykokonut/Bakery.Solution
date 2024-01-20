@@ -94,6 +94,5 @@ namespace Bakery.Tests
       Bread.ClearAll();
       CollectionAssert.AreEqual(expected, Bread.GetAll());
     }
-
   }
 }
