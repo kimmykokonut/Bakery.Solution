@@ -6,10 +6,19 @@ namespace Bakery.Models
   {
     public int Order { get; set; }
     public string Type { get; }
+    private static Dictionary<string, int> _instances = new Dictionary<string, int>();
     public Bread(int quantity, string flavor)
     {
       Order = quantity;
       Type = flavor;
+      if (_instances.ContainsKey(Type))
+      {
+        _instances[Type] += Order;
+      }
+      else
+      {
+        _instances.Add(Type, Order);
+      }
     }
     public int CalcPrice()
     {
@@ -23,7 +32,7 @@ namespace Bakery.Models
 
         for (int i = 1; i <= Order; i++)
         {
-          if (i % 3 !=0)
+          if (i % 3 != 0)
           {
             breadTotalCost += 5;
           }
@@ -34,6 +43,14 @@ namespace Bakery.Models
     public void UpdateOrder(int addToOrder)
     {
       Order = Order + addToOrder;
+    }
+    public static Dictionary<string, int> GetAll()
+    {
+      return _instances;
+    }
+    public static void ClearAll()
+    {
+      _instances.Clear();
     }
   }
 }

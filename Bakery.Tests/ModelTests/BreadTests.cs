@@ -1,11 +1,16 @@
 using Bakery.Models;
 using System.Collections.Generic;
+using System;
 
 namespace Bakery.Tests
 {
   [TestClass]
-  public class BreadTests
+  public class BreadTests : IDisposable
   {
+    public void Dispose()
+    {
+      Bread.ClearAll();
+    }
     [TestMethod]
     public void BreadConstructor_CreatesInstanceOfBreadOrder_Bread()
     {
@@ -64,12 +69,22 @@ namespace Bakery.Tests
       testBread.UpdateOrder(addToOrder);
       Assert.AreEqual(8, testBread.Order);
     }
+    [TestMethod]
     public void GetBreadType_ReturnsTypeOfBread_String()
     {
       string newType = "French";
       Bread newBread = new Bread(1, "French");
       string result = newBread.Type;
       Assert.AreEqual(newType, result);
+    }
+    [TestMethod]
+    public void GetAll_ReturnsAllBreadInstances_Dictionary()
+    {
+      Bread bread1 = new Bread(1, "French");
+      Bread bread2 = new Bread(3, "Sourdough");
+      Dictionary<string, int> expected = new Dictionary<string, int> { {bread1.Type, bread1.Order}, { bread2.Type, bread2.Order }};
+      Dictionary<string, int> actualResult = Bread.GetAll();
+      CollectionAssert.AreEqual(expected, actualResult);
     }
 
   }
