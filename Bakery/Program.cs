@@ -45,13 +45,13 @@ namespace Bakery
         Console.WriteLine("Please try again (numbers only)...");
         PlaceOrder();
       }
-
     }
     static void ConfirmOrder(Bread newBreadF, Bread newBreadS, Pastry newPastry)
     {
       Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
       Console.WriteLine("...Please confirm your order...");
-      Console.WriteLine($"I see you want to order: \n{newBreadF.Order} loaves of French bread \n{newBreadS.Order} loaves of Sourdough bread \n{newPastry.Order} pastry item(s)");
+      Console.WriteLine($"I see you want to order: \n-{newBreadF.Order} loaves of French bread \n-{newBreadS.Order} loaves of Sourdough bread \n-{newPastry.Order} pastry item(s)");
+      Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
       Console.WriteLine("Is that correct? Enter 'y' to receive your total order cost or 'n' to place your order again");
       string userInput = Console.ReadLine();
       if (userInput == "y" || userInput == "Y")
@@ -83,9 +83,9 @@ namespace Bakery
         newBreadS.UpdateOrder(breadUpdateS);
         newPastry.UpdateOrder(pastryUpdate);
         Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
-        Console.WriteLine($"Your current order: \n*French Bread {newBreadF.Order} loaves \n*Sourdough Bread {newBreadS.Order} loaves \n*Pastries {newPastry.Order}.");
+        Console.WriteLine($"Your current order: \n-French Bread {newBreadF.Order} loaves \n-Sourdough Bread {newBreadS.Order} loaves \n-Pastries {newPastry.Order}.");
         Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
-        Console.WriteLine("Type 'more' to add more baked goods or any other key to receive your receipt"); 
+        Console.WriteLine("Type 'more' to add more baked goods or any other key to receive your receipt");
         string userUpdateInput = Console.ReadLine();
         if (userUpdateInput == "more")
         {
@@ -134,5 +134,4 @@ namespace Bakery
       }
     }
   }
-
 }

@@ -17,7 +17,7 @@ namespace Bakery.Models
       else
       {
         int pastryTotalCost = 0;
-        
+
         for (int i = 1; i <= Order; i++)
         {
           if (i % 4 != 0)
@@ -25,12 +25,12 @@ namespace Bakery.Models
             pastryTotalCost += 2;
           }
         }
-          return pastryTotalCost;
-        }
+        return pastryTotalCost;
       }
+    }
     public void UpdateOrder(int addToOrder)
     {
       Order = Order + addToOrder;
     }
   }
-  }
+}
