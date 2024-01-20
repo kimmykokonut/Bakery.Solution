@@ -86,6 +86,14 @@ namespace Bakery.Tests
       Dictionary<string, int> actualResult = Bread.GetAll();
       CollectionAssert.AreEqual(expected, actualResult);
     }
+    public void ClearAll_DeletesAllBreadInDictionary_Void()
+    {
+      Bread bread1 = new Bread(1, "French");
+      Bread bread2 = new Bread(3, "Sourdough");
+      Dictionary<string, int> expected = new Dictionary<string, int> { };
+      Bread.ClearAll();
+      CollectionAssert.AreEqual(expected, Bread.GetAll());
+    }
 
   }
 }
